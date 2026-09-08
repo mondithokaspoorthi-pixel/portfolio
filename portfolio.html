@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spoorthi Mondithoka — Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Nunito:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F3EC;
+    --paper:#FBF9F4;
+    --ink:#221F1B;
+    --ink-soft:#4A443C;
+    --terracotta:#C1633B;
+    --terracotta-deep:#9E4C2B;
+    --teal:#1F5C54;
+    --gold:#B8934A;
+    --line:#E4DCCB;
+    --code-bg:#241F19;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Nunito',sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3,.mono{font-family:'Poppins',sans-serif;}
+  .mono-code{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--teal);outline-offset:3px;}
+
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px;}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:20;
+    background:rgba(247,243,236,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:62px;}
+  .brand{font-weight:700;font-size:1.05rem;letter-spacing:-0.01em;}
+  .brand span{color:var(--terracotta-deep);}
+  .navlinks{display:flex;gap:26px;font-size:0.92rem;font-weight:600;}
+  .navlinks a{color:var(--ink-soft);transition:color .15s;}
+  .navlinks a:hover{color:var(--terracotta-deep);}
+
+  /* HERO */
+  header.hero{padding:76px 0 64px;position:relative;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:end;}
+  .hero-title{font-size:clamp(2.4rem,6vw,3.6rem);font-weight:800;line-height:1.05;letter-spacing:-0.02em;}
+  .hero-role{margin-top:14px;font-size:1.15rem;color:var(--ink-soft);font-weight:500;max-width:44ch;}
+  .hero-links{margin-top:26px;display:flex;flex-wrap:wrap;gap:14px;}
+  .hero-links a{
+    font-size:0.88rem;font-weight:600;padding:9px 16px;
+    border:1.5px solid var(--ink);border-radius:2px;
+    transition:background .15s, color .15s;
+  }
+  .hero-links a:hover{background:var(--ink);color:var(--paper);}
+  .hero-links a.primary{background:var(--terracotta);border-color:var(--terracotta);color:var(--paper);}
+  .hero-links a.primary:hover{background:var(--terracotta-deep);border-color:var(--terracotta-deep);}
+
+  .hero-panel{
+    background:var(--code-bg);color:#E9E4D8;
+    border-radius:4px;padding:20px 22px;
+    font-size:0.86rem;
+  }
+  .hero-panel .mono-code{color:#E9E4D8;}
+  .hero-panel .kw{color:#E3A585;}
+  .hero-panel .str{color:#B8D9A0;}
+  .hero-panel .num{color:#D9B36B;}
+  .hero-panel .cmt{color:#8A8377;}
+  .hero-panel pre{white-space:pre-wrap;line-height:1.7;}
+
+  /* SECTION SHELL */
+  section{padding:56px 0;border-top:1px solid var(--line);}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:30px;gap:20px;}
+  .section-head h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.01em;}
+  .section-note{font-size:0.85rem;color:var(--ink-soft);}
+
+  /* ABOUT */
+  .about-body{max-width:62ch;font-size:1.02rem;color:var(--ink-soft);}
+  .about-body p + p{margin-top:14px;}
+
+  /* SKILLS */
+  .skill-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+  .skill-col h3{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--terracotta-deep);font-weight:700;margin-bottom:10px;}
+  .skill-col ul{list-style:none;}
+  .skill-col li{font-size:0.94rem;padding:5px 0;color:var(--ink);border-bottom:1px dashed var(--line);}
+  .skill-col li:last-child{border-bottom:none;}
+
+  /* PROJECTS */
+  .project{
+    display:grid;grid-template-columns:120px 1fr;gap:24px;
+    padding:26px 0;border-bottom:1px solid var(--line);
+  }
+  .project:last-child{border-bottom:none;}
+  .project-tag{
+    font-size:0.72rem;font-weight:700;letter-spacing:0.03em;
+    color:var(--teal);
+    align-self:start;padding-top:3px;
+  }
+  .project h3{font-size:1.15rem;font-weight:700;margin-bottom:6px;}
+  .project p{color:var(--ink-soft);font-size:0.95rem;max-width:60ch;}
+  .stack{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;}
+  .stack span{
+    font-size:0.76rem;font-family:'JetBrains Mono',monospace;
+    background:var(--paper);border:1px solid var(--line);
+    padding:3px 8px;border-radius:3px;color:var(--ink-soft);
+  }
+
+  /* ACHIEVEMENTS */
+  .ach-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .ach-card{
+    background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--gold);
+    padding:18px;border-radius:2px;
+  }
+  .ach-card .num{font-family:'Poppins',sans-serif;font-size:1.7rem;font-weight:800;color:var(--terracotta-deep);}
+  .ach-card p{font-size:0.85rem;color:var(--ink-soft);margin-top:4px;}
+
+  /* EDUCATION */
+  .edu-row{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;}
+  .edu-row h3{font-size:1.05rem;font-weight:700;}
+  .edu-row .years{font-size:0.85rem;color:var(--ink-soft);font-family:'JetBrains Mono',monospace;}
+  .edu-sub{color:var(--ink-soft);font-size:0.92rem;margin-top:4px;}
+  .langs{margin-top:18px;display:flex;gap:22px;font-size:0.9rem;color:var(--ink-soft);}
+  .langs b{color:var(--ink);}
+
+  /* CONTACT / FOOTER */
+  footer{padding:60px 0 46px;background:var(--ink);color:var(--cream);}
+  footer .wrap{display:flex;flex-direction:column;gap:22px;}
+  footer h2{font-size:1.6rem;font-weight:700;max-width:20ch;}
+  footer .contact-list{display:flex;flex-wrap:wrap;gap:22px;font-size:0.92rem;}
+  footer .contact-list a{color:var(--cream);border-bottom:1px solid rgba(247,243,236,0.35);padding-bottom:2px;}
+  footer .contact-list a:hover{border-color:var(--terracotta);color:var(--terracotta);}
+  footer .fine{font-size:0.78rem;color:#9A9488;margin-top:10px;}
+
+  @media (max-width:760px){
+    .hero-grid{grid-template-columns:1fr;}
+    .skill-cols{grid-template-columns:repeat(2,1fr);}
+    .ach-grid{grid-template-columns:repeat(2,1fr);}
+    .project{grid-template-columns:1fr;}
+    .navlinks{display:none;}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Spoorthi<span>.</span></div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 class="hero-title">Spoorthi<br>Mondithoka</h1>
+      <p class="hero-role">Software engineering student building backend systems in Java — with a growing pull toward cybersecurity and full-stack work.</p>
+      <div class="hero-links">
+        <a class="primary" href="mailto:mondithkaspoorthi@gmail.com">Email me</a>
+        <a href="https://linkedin.com/in/spoorthi-mondithoka-3a62b339b" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/mondithokaspoorthi-pixel" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://leetcode.com/no_one_need_33" target="_blank" rel="noopener">LeetCode</a>
+      </div>
+    </div>
+    <div class="hero-panel mono-code">
+      <pre><span class="kw">class</span> Spoorthi {
+  <span class="kw">String</span> role = <span class="str">"CSE student"</span>;
+  <span class="kw">String</span> stack = <span class="str">"Java, Python, SQL"</span>;
+  <span class="kw">int</span> dsaSolved = <span class="num">100</span>; <span class="cmt">// +</span>
+  <span class="kw">String</span> role2 = <span class="str">"GFG Campus Mantri"</span>;
+}</pre>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head"><h2>About</h2></div>
+    <div class="about-body">
+      <p>I'm a B.Tech Computer Science student at Mohan Babu University, working mostly in Java, Python and SQL, with data structures and algorithms as my daily practice. Backend development is where I spend most of my time — the logic, not just the layout.</p>
+      <p>Alongside coursework, I run community work as a GFG Campus Mantri, and I like shipping things end to end — from a Java desktop tool to a digital product sold on Gumroad. Cybersecurity and full-stack development are the two directions I'm actively growing into next.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head"><h2>Skills</h2></div>
+    <div class="skill-cols">
+      <div class="skill-col">
+        <h3>Languages</h3>
+        <ul><li>Java</li><li>Python</li><li>SQL</li></ul>
+      </div>
+      <div class="skill-col">
+        <h3>Core</h3>
+        <ul><li>Data Structures</li><li>Algorithms</li><li>OOP</li></ul>
+      </div>
+      <div class="skill-col">
+        <h3>Tools</h3>
+        <ul><li>Git</li><li>GitHub</li><li>VS Code</li><li>IntelliJ</li></ul>
+      </div>
+      <div class="skill-col">
+        <h3>Also</h3>
+        <ul><li>UI/UX design</li><li>Spring Boot (learning)</li><li>React + TS (learning)</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <span class="section-note">Shipped, in progress, and self-initiated</span>
+    </div>
+
+    <div class="project">
+      <div class="project-tag">FULL&nbsp;STACK</div>
+      <div>
+        <h3>PhishGuard</h3>
+        <p>A community-driven scam and phishing link checker, built as part of the Digital Heroes Full Stack Developer trial — a production-grade build within a 7–14 day window.</p>
+        <div class="stack"><span>Java</span><span>Spring Boot</span><span>React</span><span>TypeScript</span></div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-tag">UI/UX</div>
+      <div>
+        <h3>Damnsure — Placement Prep Platform</h3>
+        <p>A centralized platform for placement preparation. Designed the UI/UX wireframes and mapped out the core user workflows before development.</p>
+        <div class="stack"><span>Wireframing</span><span>UX flows</span></div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-tag">JAVA</div>
+      <div>
+        <h3>MyAssistant</h3>
+        <p>A Java desktop assistant built to practice core OOP concepts and exception handling in a real, usable tool.</p>
+        <div class="stack"><span>Java</span><span>OOP</span></div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-tag">PRODUCT</div>
+      <div>
+        <h3>30-Day DSA Sprint Sheet</h3>
+        <p>My first digital product — a DSA ebook and tracker hybrid, self-published and sold on Gumroad to Indian buyers.</p>
+        <div class="stack"><span>Gumroad</span><span>Self-published</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="achievements">
+  <div class="wrap">
+    <div class="section-head"><h2>Achievements</h2></div>
+    <div class="ach-grid">
+      <div class="ach-card"><div class="num">100+</div><p>DSA problems solved on LeetCode</p></div>
+      <div class="ach-card"><div class="num">30</div><p>Days — RisingBrain DSA challenge, completed and documented on LinkedIn</p></div>
+      <div class="ach-card"><div class="num">1</div><p>Digital product launched and sold independently</p></div>
+      <div class="ach-card"><div class="num">GFG</div><p>Campus Mantri — community & content lead</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head"><h2>Education</h2></div>
+    <div class="edu-row">
+      <h3>B.Tech, Computer Science &amp; Engineering</h3>
+      <span class="years">2024 — 2028</span>
+    </div>
+    <p class="edu-sub">Mohan Babu University</p>
+    <div class="langs">
+      <span><b>Telugu</b> — Native</span>
+      <span><b>English</b> — Professional</span>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Open to Java / backend and full-stack roles.</h2>
+    <div class="contact-list">
+      <a href="mailto:mondithkaspoorthi@gmail.com">mondithkaspoorthi@gmail.com</a>
+      <a href="tel:8341545951">8341545951</a>
+      <a href="https://linkedin.com/in/spoorthi-mondithoka-3a62b339b" target="_blank" rel="noopener">linkedin.com/in/spoorthi-mondithoka-3a62b339b</a>
+      <a href="https://github.com/mondithokaspoorthi-pixel" target="_blank" rel="noopener">github.com/mondithokaspoorthi-pixel</a>
+      <a href="https://leetcode.com/no_one_need_33" target="_blank" rel="noopener">LeetCode: no_one_need_33</a>
+    </div>
+    <p class="fine">Built by Spoorthi Mondithoka.</p>
+  </div>
+</footer>
+
+</body>
+</html>
